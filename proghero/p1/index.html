@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="head">HI</h1>
+    <p class="p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, voluptatem et aliquam iste, corrupti quia accusamus nihil atque saepe adipisci facilis veniam amet. Vitae rerum rem quos doloribus culpa asperiores.</p>
+
+    <ol id="order-list">
+        <Li>A</Li>
+        <Li>B</Li>
+        <Li>C</Li>
+        <Li>B</Li>
+        <Li>a</Li>
+    </ol>
+  
+    <button onclick="click()" id="c">click me</button>
+    <button id="more">more</button>
+    <!-- UPDATE -->
+    <section id="hi">
+        <h3 id="default-text">Default text</h3>
+        <input id="input-text" type="text">
+        <button id="update-btn">Update</button>
+      </section>
+     <!-- DELETE -->
+    <section>
+        <h1 id="secret-info">My secret Info</h1>
+        <input id="delete-confirm" type="text" placeholder="please type delete">
+        <button id="btn-delete" disabled>Delete</button>
+    </section>
+    <!-- //BUBBLE -->
+     <section id="list-contain">
+        <h1>Exploring Bubble</h1>
+        <ul id="list-ul">
+            <li id="item-1">Lorem, ipsum.</li>
+            <li id="item-2">Minus, molestias.</li>
+            <li id="item-3">Numquam, libero?</li>
+            <li id="item-4">Ab, ullam.</li>
+            <li id="item-5">Modi, eveniet?</li>
+            <li id="item-6">Officia, exercitationem.</li>
+        </ul>
+     </section>
+
+    <script src="./index.js"></script>
+
+    <script>
+        //INPUTVALUE
+          const updateBtn = document.getElementById('update-btn');
+        updateBtn.addEventListener('click',function(){
+            const defaultText = document.getElementById('default-text');
+        const inputText = document.getElementById('input-text');
+        const inputTextValue=inputText.value;
+        defaultText.innerText=inputTextValue;
+        inputText.value=''
+        })
+       //DELETE FUNCTION
+        document.getElementById('delete-confirm').addEventListener('keyup', function(event){
+            const text=event.target.value;
+            const deleteButton= document.getElementById('btn-delete');
+            if(text==='delete'){
+                deleteButton.removeAttribute('disabled');
+            }
+            else{
+                deleteButton.setAttribute('disabled', true)
+            }
+        })
+
+        document.getElementById('btn-delete').addEventListener('click',function(){
+            const secret=document.getElementById('secret-info');
+            secret.style.display='none';
+        })
+
+        //BUBBLE
+       
+    </script>
+</body>
+</html>
