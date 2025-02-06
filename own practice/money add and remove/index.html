@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.23/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Add to Cart</title>
+</head>
+<body>
+    
+    <div class="flex justify-center">
+        <div class="mockup-phone">
+            <div class="camera"></div>
+            <div class="display">
+              <div class="artboard artboard-demo phone-1">
+                <!-- Creating Elements Here-->
+                <div class="font-bold text-white py-5" id="items">
+
+                </div>
+                <div class="flex justify-center border-2">
+                    <div class="p-3"><H3>WATCH</H3></div>
+                    <div class="p-3"><p>Price:<span id="price-1">400</span></p></div>
+                    <div class="p-3">
+                        <button class="text-green-400 font-bold" id="add-btn-1">Add</button>
+                        <button class="text-red-400 font-bold" id="remove-1">Remove</button>
+                    </div>
+                </div>
+                <div class="flex justify-start border-2 my-2">
+                    <div class="p-3"><H3>MOBILE</H3></div>
+                    <div class="p-3"><p>Price:<span id="price-2">15000</span></p></div>
+                    <div class="p-3">
+                        <button class="text-green-400 font-bold" id="add-btn-2">Add</button>
+                        <button class="text-red-400 font-bold" id="remove-2">Remove</button>
+                    </div>
+                </div>
+
+                <P>Total Bill:<span id="total-bill">0</span></P>
+              </div>
+            </div>
+          </div>
+    </div>
+
+
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <script src="./js/createNewItems.js"></script>
+    <script src="./js/add.js"></script>
+    <script src="./js/remove.js"></script>
+</body>
+</html>
