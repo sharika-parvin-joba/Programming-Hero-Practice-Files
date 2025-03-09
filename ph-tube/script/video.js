@@ -74,8 +74,7 @@ document.getElementById('customModal').showModal();
 // const cardDemo
 //display vdos
 const displayVideos=(videos)=>{
-    const videoContainer=document.
-    getElementById('videos');
+    const videoContainer=document.getElementById('videos');
     videoContainer.innerHTML="";
     if(videos.length==0){
         videoContainer.classList.remove('grid');
