@@ -1,6 +1,4 @@
 //category btn
-
-
 const loadCategory=()=>{
  fetch('https://openapi.programming-hero.com/api/peddy/categories')
  .then(res=>res.json())
@@ -13,7 +11,7 @@ const displayCategory=(data)=>{
     data.forEach((item)=>{
         const buttonContainer=document.createElement('div');
         buttonContainer.innerHTML=`
-        <button onclick="loadCategoryPets(${item.id})" class="border-1 border-gray-300 rounded-md px-4 py-2">${item.category}</button> 
+        <button onclick="loadCategoryPets('${item.category}')" class="border-1 border-gray-300 rounded-md px-4 py-2">${item.category}</button> 
         `;
 
         categoryContainer.append(buttonContainer);
@@ -24,7 +22,7 @@ const displayCategory=(data)=>{
 //load category pets by click btn
 
 const loadCategoryPets=(categoryName)=>{
-    //alert(id)
+    //alert(categoryName)
     fetch(`https://openapi.programming-hero.com/api/peddy/category/${categoryName}`)
     .then(res=>res.json())
     .then(data=>displayVideos(data.data))
@@ -38,11 +36,44 @@ const loadVideos=()=>{
     .then(data=>displayVideos(data.pets))
 }
 
+//load details
+ const loadDetails=(detailsId)=>{
+fetch(`https://openapi.programming-hero.com/api/peddy/pet/${detailsId}`)
+.then(res=>res.json()
+.then(data=>displayPetDetaills(data.petData))
+)
+ }
+
+const displayPetDetaills=(infoPet)=>{
+    const petDetailDiv=document.getElementById('modal-content');
+    petDetailDiv.innerHTML=`
+    <img class="w-full h-full object-cover" src=${infoPet.image}>
+    <p class="font-bold">${infoPet.pet_name}</p>
+    <p class="fw-bold">Deatils:${infoPet.pet_details}</p>
+    `
+    document.getElementById('my_modal_5').showModal();
+}
+
 //display vdos
 
 const displayVideos=(videos)=>{
     console.log(videos)
-    const videoContainer=document.getElementById('videos')
+    const videoContainer=document.getElementById('videos');
+    videoContainer.innerHTML="";
+    if(videos.length==0){
+        videoContainer.classList.remove('grid');
+        videoContainer.innerHTML=`
+        <div class="min-h-[300px] w-full flex flex-col gap-5 justify-center items-center">
+        <h2 class="text-center text-xl font-bold">NO CONTENT HERE IN THIS CATEGORY</h2>
+        </div>
+        `;
+        return;
+    }
+    else{
+        videoContainer.classList.add('grid');
+    }
+
+
     videos.forEach((vdo)=>{
         const card= document.createElement('div');
         card.innerHTML=`
@@ -61,7 +92,7 @@ const displayVideos=(videos)=>{
      <p class="flex items-center"><img src="https://img.icons8.com/?size=100&id=1665&format=png&color=000000" class="w-7 px-2">Gender : ${vdo.gender}</p>
     <p class="flex items-center"><img src="https://img.icons8.com/?size=100&id=121&format=png&color=000000" class="w-7 px-2">Price : ${vdo.price}</p>
     <div class="card-actions justify-end">
-      <button class="btn px-2 py-1 text-sm btn-primary">Details</button>
+      <button onclick="loadDetails(${vdo.petId})" class="btn px-2 py-1 text-sm btn-primary">Details</button>
     </div>
   </div>
 </div>
